@@ -1,0 +1,71 @@
+Função removerChave(arvoreB, s):
+    Se arvoreB for vazia:
+        Retorne arvoreB 
+
+    Senão:
+        Encontre Página (P, W) que contém a chave 's' na árvoreB:
+        Se P for uma página folha:
+            Remova 's' de P
+        Senão:
+            Substitua 's' por 's' imediatamente maior em uma página folha P'
+            Remova 's' de P'
+
+        Se P tiver menos de 'd' chaves:
+            Se P for a primeira página de arvoreB:
+                Se P tiver 0 chaves:
+                    arvoreB.raiz = P.primeiroFilho
+                Senão:
+                    arvoreB.raiz = P.filhos[0]
+                Remova P
+            Senão:
+                Encontre uma página irmã Q de P com m chaves, onde k + m < 2d
+
+                Se P tiver um irmão com m chaves:
+                    redistribuir(p,q,w)
+                    
+                Senão:
+                    concatenar(p,q,w)
+                    Remova Q
+             
+
+        Retorne arvoreB
+
+
+
+Função redistribuir(P, Q, W):
+    Se P estiver à esquerda de Q então:
+        
+        chave_movida = W.chaves[0]
+        P.chaves.adicionar(chave_movida)
+
+        chave_separadora = Q.chaves[0]
+        P.chaves.adicionar(chave_separadora)
+
+      
+        W.filhos.removerPrimeiro()
+    Senão:
+        chave_movida = W.chaves.último()
+        Q.chaves.inserir(0, chave_movida)
+
+        chave_separadora = Q.chaves[0]
+        P.chaves.adicionar(chave_separadora)
+
+        W.filhos.removerÚltimo()
+
+Função concatenar(P, Q, W):
+// Considere J o elemento que apontava para Q
+    Se P estiver à esquerda de Q então:
+     unir(p,q);
+     P.chaves.adicionar(j);
+     Q.chaves.remover(j);
+     removerPagina(q);
+
+    Senão:
+        Q.chaves.concatenar(W.chaves)
+
+        chave_separadora = Q.chaves[0]
+        Q.chaves.removerPrimeiro()
+
+        W.filhos.removerPrimeiro()
+
+           
