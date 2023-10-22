@@ -78,7 +78,7 @@ int main(void)
       Nave *t = topo(fila);
 
       if (!permRegistrada(permRegs, nPerm, t->recursos)) {
-        memcpy(permRegs[nPerm], t->recursos, sizeof(int) * MAX_REC);
+        memcpy(permRegs[nPerm], t->recursos, sizeof(recursos) * MAX_REC);
         nPerm++;
       }
 
